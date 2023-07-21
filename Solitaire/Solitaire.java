@@ -21,6 +21,7 @@ public class Solitaire {
 
         deck.shuffle();
 
+        // ArrayList<Integer> list = new ArrayList<Integer>();
 
     }
 }

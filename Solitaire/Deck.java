@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Random;
 
 /**
  * Ight steven this is a deck which you're gonna need in order to shuffle
@@ -56,11 +56,41 @@ public class Deck {
 
     public void shuffle() {
         Random random = new Random();
+        Card[][] tempDeck = new Card[4][13];
 
+        // turns the deck into an ArrayBasedList
+        ArrayBasedList<Card> cardDeck = new ArrayBasedList<Card>();
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 13; j++) {
+                cardDeck.add(deck[i][j]);
+            }
+        }
+        
+        // 
         for (int i = 0; i < 52; i++) {
             int randomInt = random.nextInt(52);
-            System.out.println(randomInt);
+            // System.out.println(randomInt);
+            int row = randomInt / 13;
+            int column = randomInt % 13;
+
+            if (tempDeck[row][column] != null) {
+                // tempDeck[row][column] = ;
+            }
+
+
         }
+
+        // use this if you wanna do it using Collections
+        // ArrayBasedList<Integer> list = new ArrayBasedList<Integer>();
+        // for (int i = 0; i < 52; i++) {
+        //     list.add(i);
+        //     // System.out.println(list.get(i));
+        // }
+
+        
+
+
+
     }
 
     
