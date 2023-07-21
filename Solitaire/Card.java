@@ -46,6 +46,10 @@ public class Card {
     }
 
     public String toString() {
+        // if (value == null || face == null) {
+        //     return "null";
+        // }
+        
         String rtn = "";
         if (color) {
             rtn = rtn + "\u001B[31m";

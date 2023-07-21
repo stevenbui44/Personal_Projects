@@ -40,13 +40,15 @@ public class Deck {
     /** Outputs the 4 Suit array as a String */
     public String toString() {
         String rtn = "";
-        // for (int i = 0; i < 4; i++) {
-        //     rtn = rtn + deck[i].toString() + "\n";
-        // }
 
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 13; j++) {
-                rtn = rtn + deck[i][j].toString() + "\t";
+                if (deck[i][j] == null) {
+                    rtn = rtn + "null" + "\t";
+                }
+                else {
+                    rtn = rtn + deck[i][j].toString() + "\t";
+                }
             }
             rtn = rtn + "\n";
         }

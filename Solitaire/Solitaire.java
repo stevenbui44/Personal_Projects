@@ -11,12 +11,12 @@
 public class Solitaire {
     public static void main(String[] args) {
 
-        // CHUNK ONE: Testing shuffle
-        // System.out.println("hi world :3");
-        Deck deck = new Deck();
+        // // CHUNK ONE: Testing shuffle
+        // // System.out.println("hi world :3");
+        // Deck deck = new Deck();
+        // // System.out.println(deck.toString());
+        // deck.shuffle();
         // System.out.println(deck.toString());
-        deck.shuffle();
-        System.out.println(deck.toString());
 
         // CHUNK TWO: testing removeCard
         // for (int i = 0; i < 52; i++) {
@@ -30,33 +30,82 @@ public class Solitaire {
 
 
 
-        // Deck deck = new Deck();
-        // deck.shuffle();
+        Deck deck = new Deck();
+        deck.shuffle();
+        System.out.println(deck.toString());
 
-        // // we should automatically start the program with the piles being set up, the stock being full
-        // openPile1 = new ArrayBasedStack<Card>();
-        // openPile2 = new ArrayBasedStack<Card>();
-        // openPile3 = new ArrayBasedStack<Card>();
-        // openPile4 = new ArrayBasedStack<Card>();
-        // openPile5 = new ArrayBasedStack<Card>();
-        // openPile6 = new ArrayBasedStack<Card>();
-        // openPile7 = new ArrayBasedStack<Card>();
+        // we should automatically start the program with the piles being set up, the stock being full
+        openPile1 = new ArrayBasedStack<Card>();
+        openPile2 = new ArrayBasedStack<Card>();
+        openPile3 = new ArrayBasedStack<Card>();
+        openPile4 = new ArrayBasedStack<Card>();
+        openPile5 = new ArrayBasedStack<Card>();
+        openPile6 = new ArrayBasedStack<Card>();
+        openPile7 = new ArrayBasedStack<Card>();
 
-        // closedPile1 = new ArrayBasedStack<Card>();
-        // closedPile2 = new ArrayBasedStack<Card>();
-        // closedPile3 = new ArrayBasedStack<Card>();
-        // closedPile4 = new ArrayBasedStack<Card>();
-        // closedPile5 = new ArrayBasedStack<Card>();
-        // closedPile6 = new ArrayBasedStack<Card>();
-        // closedPile7 = new ArrayBasedStack<Card>();
+        closedPile2 = new ArrayBasedStack<Card>();
+        closedPile3 = new ArrayBasedStack<Card>();
+        closedPile4 = new ArrayBasedStack<Card>();
+        closedPile5 = new ArrayBasedStack<Card>();
+        closedPile6 = new ArrayBasedStack<Card>();
+        closedPile7 = new ArrayBasedStack<Card>();
 
-        // stock = new ArrayBasedStack<Card>();
-        // waste = new ArrayBasedStack<Card>();
+        stock = new ArrayBasedStack<Card>();
+        waste = new ArrayBasedStack<Card>();
 
-        // hearts = new ArrayBasedStack<Card>();
-        // diamonds = new ArrayBasedStack<Card>();
-        // clubs = new ArrayBasedStack<Card>();
-        // spades = new ArrayBasedStack<Card>();
+        hearts = new ArrayBasedStack<Card>();
+        diamonds = new ArrayBasedStack<Card>();
+        clubs = new ArrayBasedStack<Card>();
+        spades = new ArrayBasedStack<Card>();
+
+        openPile1.push(deck.removeCard());
+        
+        closedPile2.push(deck.removeCard());
+        openPile2.push(deck.removeCard());
+
+        closedPile3.push(deck.removeCard());
+        closedPile3.push(deck.removeCard());
+        openPile3.push(deck.removeCard());
+
+        closedPile4.push(deck.removeCard());
+        closedPile4.push(deck.removeCard());
+        closedPile4.push(deck.removeCard());
+        openPile4.push(deck.removeCard());
+
+        closedPile5.push(deck.removeCard());
+        closedPile5.push(deck.removeCard());
+        closedPile5.push(deck.removeCard());
+        closedPile5.push(deck.removeCard());
+        openPile5.push(deck.removeCard());
+
+        closedPile6.push(deck.removeCard());
+        closedPile6.push(deck.removeCard());
+        closedPile6.push(deck.removeCard());
+        closedPile6.push(deck.removeCard());
+        closedPile6.push(deck.removeCard());
+        openPile6.push(deck.removeCard());
+
+        closedPile7.push(deck.removeCard());
+        closedPile7.push(deck.removeCard());
+        closedPile7.push(deck.removeCard());
+        closedPile7.push(deck.removeCard());
+        closedPile7.push(deck.removeCard());
+        closedPile7.push(deck.removeCard());
+        openPile7.push(deck.removeCard());
+
+        // System.out.println(deck.size());
+        // System.out.println(deck.toString());
+
+        while (!deck.isEmpty()) {
+            stock.push(deck.removeCard());
+        }
+        
+        /*  
+            TODO: work on stock going to waste
+            TODO: work on waste history (stacks and queues probably)
+            TODO: work on piles going to foundation
+            TODO: work on formatting the piles
+        */
 
         
 
@@ -91,7 +140,6 @@ public class Solitaire {
     private static ArrayBasedStack<Card> openPile6;
     private static ArrayBasedStack<Card> openPile7;
 
-    private static ArrayBasedStack<Card> closedPile1;
     private static ArrayBasedStack<Card> closedPile2;
     private static ArrayBasedStack<Card> closedPile3;
     private static ArrayBasedStack<Card> closedPile4;
@@ -101,6 +149,11 @@ public class Solitaire {
 
 
     public void moveStockToWaste(ArrayBasedStack<Card> a, ArrayBasedStack<Card> b) {
+
+    }
+
+    // NOTE: only use this whenever the stock is empty, this should never be an option for the player
+    private void moveWasteToStock(ArrayBasedStack<Card> a, ArrayBasedStack<Card> b) {
 
     }
 
