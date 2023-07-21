@@ -96,6 +96,7 @@ public class Solitaire {
         // System.out.println(deck.size());
         // System.out.println(deck.toString());
 
+        // filling up the stock. The top of the stack is the END of the deck.
         while (!deck.isEmpty()) {
             stock.push(deck.removeCard());
         }
@@ -107,13 +108,146 @@ public class Solitaire {
             TODO: work on formatting the piles
         */
 
+
+
+
+
+        // CHUNK THREE: testing stock to waste
+        System.out.println("Stock:");
+        ArrayBasedStack<Card> tempStock = new ArrayBasedStack<Card>();
+        while (!stock.isEmpty()) {
+            tempStock.push(stock.pop());
+        }
+        while (!tempStock.isEmpty()) {
+            stock.push(tempStock.pop());
+            System.out.print(stock.top() + "\t");
+        }
+        System.out.println();
+
+        System.out.println("Waste:");
+        ArrayBasedStack<Card> tempWaste = new ArrayBasedStack<Card>();
+        while (!waste.isEmpty()) {
+            tempWaste.push(waste.pop());
+        }
+        while (!tempWaste.isEmpty()) {
+            waste.push(tempWaste.pop());
+            System.out.print(waste.top() + "\t");
+        }
+        System.out.println("\n\n\n");
+
+
+
+        moveStockToWaste();
+
+        System.out.println("Stock:");
+        tempStock = new ArrayBasedStack<Card>();
+        while (!stock.isEmpty()) {
+            tempStock.push(stock.pop());
+        }
+        while (!tempStock.isEmpty()) {
+            stock.push(tempStock.pop());
+            System.out.print(stock.top() + "\t");
+        }
+        System.out.println();
+
+        System.out.println("Waste:");
+        tempWaste = new ArrayBasedStack<Card>();
+        while (!waste.isEmpty()) {
+            tempWaste.push(waste.pop());
+        }
+        while (!tempWaste.isEmpty()) {
+            waste.push(tempWaste.pop());
+            System.out.print(waste.top() + "\t");
+        }
+        System.out.println("\n\n\n");
+
+
+
+
+        moveStockToWaste();
+
+        System.out.println("Stock:");
+        tempStock = new ArrayBasedStack<Card>();
+        while (!stock.isEmpty()) {
+            tempStock.push(stock.pop());
+        }
+        while (!tempStock.isEmpty()) {
+            stock.push(tempStock.pop());
+            System.out.print(stock.top() + "\t");
+        }
+        System.out.println();
+
+        System.out.println("Waste:");
+        tempWaste = new ArrayBasedStack<Card>();
+        while (!waste.isEmpty()) {
+            tempWaste.push(waste.pop());
+        }
+        while (!tempWaste.isEmpty()) {
+            waste.push(tempWaste.pop());
+            System.out.print(waste.top() + "\t");
+        }
+        System.out.println("\n\n\n");
+
+
+
+        moveStockToWaste();
+
+        System.out.println("Stock:");
+        tempStock = new ArrayBasedStack<Card>();
+        while (!stock.isEmpty()) {
+            tempStock.push(stock.pop());
+        }
+        while (!tempStock.isEmpty()) {
+            stock.push(tempStock.pop());
+            System.out.print(stock.top() + "\t");
+        }
+        System.out.println();
+
+        System.out.println("Waste:");
+        tempWaste = new ArrayBasedStack<Card>();
+        while (!waste.isEmpty()) {
+            tempWaste.push(waste.pop());
+        }
+        while (!tempWaste.isEmpty()) {
+            waste.push(tempWaste.pop());
+            System.out.print(waste.top() + "\t");
+        }
+        System.out.println("\n\n\n");
+
+
+
+
+        moveWasteToStock();
+
+        System.out.println("Stock:");
+        tempStock = new ArrayBasedStack<Card>();
+        while (!stock.isEmpty()) {
+            tempStock.push(stock.pop());
+        }
+        while (!tempStock.isEmpty()) {
+            stock.push(tempStock.pop());
+            System.out.print(stock.top() + "\t");
+        }
+        System.out.println();
+
+        System.out.println("Waste:");
+        tempWaste = new ArrayBasedStack<Card>();
+        while (!waste.isEmpty()) {
+            tempWaste.push(waste.pop());
+        }
+        while (!tempWaste.isEmpty()) {
+            waste.push(tempWaste.pop());
+            System.out.print(waste.top() + "\t");
+        }
+        System.out.println("\n\n\n");
+
         
 
     }
 
     /** 
      * Stock is where you pull out new cards from. Stack data structure since you remove one card 
-     * at a time, and you use a queue to reset it.
+     * at a time, and you use a queue to reset it. The top of the stack is the END of the deck.
      */
     private static ArrayBasedStack<Card> stock;
 
@@ -148,32 +282,40 @@ public class Solitaire {
     private static ArrayBasedStack<Card> closedPile7;
 
 
-    public void moveStockToWaste(ArrayBasedStack<Card> a, ArrayBasedStack<Card> b) {
+    // private void refillStack(ArrayBasedStack<Card> stack) {
 
+    // }
+
+    public static void moveStockToWaste() {
+        if (!stock.isEmpty()) {
+            waste.push(stock.pop());
+        }
     }
 
     // NOTE: only use this whenever the stock is empty, this should never be an option for the player
-    private void moveWasteToStock(ArrayBasedStack<Card> a, ArrayBasedStack<Card> b) {
-
+    private static void moveWasteToStock() {
+        while (!waste.isEmpty()) {
+            stock.push(waste.pop());
+        }
     }
 
-    public void moveWasteToPile(ArrayBasedStack<Card> a, ArrayBasedStack<Card> b) {
+    public static void moveWasteToPile(ArrayBasedStack<Card> a, ArrayBasedStack<Card> b) {
         
     }
 
-    public void moveWasteToFoundation(ArrayBasedStack<Card> a, ArrayBasedStack<Card> b) {
+    public static void moveWasteToFoundation(ArrayBasedStack<Card> a, ArrayBasedStack<Card> b) {
         
     }
 
-    public void movePileToPile(ArrayBasedStack<Card> a, ArrayBasedStack<Card> b) {
+    public static void movePileToPile(ArrayBasedStack<Card> a, ArrayBasedStack<Card> b) {
 
     }
 
-    public void movePileToFoundation(ArrayBasedStack<Card> a, ArrayBasedStack<Card> b) {
+    public static void movePileToFoundation(ArrayBasedStack<Card> a, ArrayBasedStack<Card> b) {
         
     }
 
-    public void moveFoundationToPile(ArrayBasedStack<Card> a, ArrayBasedStack<Card> b) {
+    public static void moveFoundationToPile(ArrayBasedStack<Card> a, ArrayBasedStack<Card> b) {
         
     }
 }
