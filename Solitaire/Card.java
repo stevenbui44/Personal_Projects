@@ -21,9 +21,9 @@ public class Card {
     /** 
      * This is the constructor
      */
-    public Card(String value, String face) {
+    public Card(String value, String i) {
         setValue(value);
-        setFace(face);
+        setFace(i);
     }
 
     public String getValue() {

@@ -1,6 +1,4 @@
 import java.util.Arrays;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 /**
  * An array-based list is a contiguous-memory representation of the List
