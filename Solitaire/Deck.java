@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.Random;
 
 /**
@@ -55,42 +56,85 @@ public class Deck {
     }
 
     public void shuffle() {
-        Random random = new Random();
-        Card[][] tempDeck = new Card[4][13];
+        // Card[][] tempDeck = new Card[4][13];
 
-        // turns the deck into an ArrayBasedList
-        ArrayBasedList<Card> cardDeck = new ArrayBasedList<Card>();
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 13; j++) {
-                cardDeck.add(deck[i][j]);
-            }
-        }
-        
-        // 
-        for (int i = 0; i < 52; i++) {
-            int randomInt = random.nextInt(52);
-            // System.out.println(randomInt);
-            int row = randomInt / 13;
-            int column = randomInt % 13;
+        // // CHUNK ONE: creating clusters = bad
+        // Random random = new Random();
+        // // turns the deck into an ArrayBasedQueue
+        // ArrayBasedQueue<Card> cardDeck = new ArrayBasedQueue<Card>();
+        // for (int i = 0; i < 4; i++) {
+        //     for (int j = 0; j < 13; j++) {
+        //         cardDeck.enqueue(deck[i][j]);
+        //     }
+        // }
+        // // places each card in the Queue in a random position in a new Deck
+        // for (int i = 0; i < 52; i++) {
+        //     int randomInt = random.nextInt(52);
+        //     int row = randomInt / 13;
+        //     int column = randomInt % 13;
 
-            if (tempDeck[row][column] != null) {
-                // tempDeck[row][column] = ;
-            }
+        //     // if there is no card there yet, add it
+        //     if (tempDeck[row][column] == null) {
+        //         tempDeck[row][column] = cardDeck.dequeue();
+        //     }
+        //     // if there is a card there already, place it in the next spot
+        //     else {
+        //         // Find the next available spot to place the card
+        //         boolean placed = false;
+        //         for (int r = 0; r < 4 && !placed; r++) {
+        //             for (int c = 0; c < 13 && !placed; c++) {
+        //                 if (tempDeck[r][c] == null) {
+        //                     tempDeck[r][c] = cardDeck.dequeue();
+        //                     placed = true;
+        //                 }
+        //             }
+        //         }
+        //         // If all positions are occupied, it means the deck is full.
+        //         // Handle the situation accordingly, e.g., throw an exception or break the loop.
+        //         if (!placed) {
+        //             break;
+        //         }
+        //     }
+        // }
+        // deck = tempDeck;
 
 
-        }
 
-        // use this if you wanna do it using Collections
+        // CHUNK TWO: Collections won't work
+        // // use this if you wanna do it using Collections
         // ArrayBasedList<Integer> list = new ArrayBasedList<Integer>();
         // for (int i = 0; i < 52; i++) {
         //     list.add(i);
-        //     // System.out.println(list.get(i));
         // }
 
-        
+        Card[][] tempDeck = new Card[4][13];
 
+        Random random = new Random();
 
+        // puts all of the cards in the deck into one long queue
+        ArrayBasedQueue<Card> cardDeck = new ArrayBasedQueue<Card>();
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 13; j++) {
+                cardDeck.enqueue(deck[i][j]);
+            }
+        }
 
+        int randomInt = random.nextInt(52);
+        int row = randomInt / 13;
+        int column = randomInt % 13;
+
+        // do this until the temporary deck is empty
+        while (!cardDeck.isEmpty()) {
+            if (tempDeck[row][column] == null) {
+                tempDeck[row][column] = cardDeck.dequeue();
+            }
+            else {
+                randomInt = random.nextInt(52);
+                row = randomInt / 13;
+                column = randomInt % 13;
+            }
+        }
+        deck = tempDeck;
     }
 
     
